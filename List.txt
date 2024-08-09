@@ -1,0 +1,672 @@
+Sequence Datatype available in Python are:
+1. Strings 
+2. Lists
+3. Tuples
+4. Sets
+5. Dictionaries
+
+1. List:
+A List is a collection of comma-separated values/items within square brackets [].
+Items in a list need not of same type.
+it can be of any type such as Strings, integers, float, objects or even a list 
+Lists are mutable so the value of a list can be modified.
+The values/items that make up a list are called elements.
+
+Declaring/creating a list
+list_name = []
+this would declare/initialise an empty list
+
+ex. 
+nums = []
+nums1 = [1,2,3,4,5,6]
+days = ['Monday','Tuesday']
+names = ['Ajay','Amit','Rajesh']
+vowels = ['A','E','I','O','U']
+list1 = [12345,345.64,'Amit Kumar', 'R', '#23, Sector 15']
+list2 = [nums,nums1,days]
+list3 = [1,2,[3,4],5,6]
+
+******************************************************************
+Creating Lists:
+
+1. Creating an empty List:
+nums = []
+or
+nums = list()
+
+2. Creating a list from a sequence:
+a list method/function can be used to convert a tuple or string into list.
+list_name = list(sequence/string)
+ex.
+list4 = list('Ajit Singh')
+this would convert it into list as below:
+['A', 'j', 'i', 't', ' ', 'S', 'i', 'n', 'g', 'h']
+
+3. Creating a list through user input :
+
+list5 = list(input('Enter a String : '))
+
+Enter a String : Test String
+>>> list5
+['T', 'e', 's', 't', ' ', 'S', 't', 'r', 'i', 'n', 'g']
+
+print(list5)
+['T', 'e', 's', 't', ' ', 'S', 't', 'r', 'i', 'n', 'g']
+
+Enter a String : 12345
+>>> list5
+['1', '2', '3', '4', '5']
+
+4. Creating a list from existing list:
+
+a. copying the entire list
+list1 = [1,2,3,4,5,6]
+list6 = list1
+list7 = list1[:]
+>>> list6
+[1, 2, 3, 4, 5, 6]
+>>> list7
+[1, 2, 3, 4, 5, 6]
+
+when we create a copy of list like 
+list6 = list1
+in this case both the lists share same address location in the memory
+i.e. both points to the same location in memory. this is also called 
+aliasing or alias names
+
+however, if we modify the content of the list1 or list2 then the change effect takes place
+for the both lists as they are pointing the same location
+
+however, when we create a copy of list like
+list7 = list1[:]
+both the lists points to different location
+i.e. they are stored at different locations
+
+ex.
+
+>>> list1 = [1,2,3,4,5,6]
+>>> list2 = list1
+>>> id(list1)
+2513758144768
+>>> id(list2)
+2513758144768
+>>> list3 = list1[:]
+>>> id(list3)
+2513758144320
+>>> list1[0]=99
+>>> list1
+[99, 2, 3, 4, 5, 6]
+>>> list2
+[99, 2, 3, 4, 5, 6]
+>>> list3
+[1, 2, 3, 4, 5, 6]
+>>> list2[2]=66
+>>> list1
+[99, 2, 66, 4, 5, 6]
+>>> list2
+[99, 2, 66, 4, 5, 6]
+>>> list3
+[1, 2, 3, 4, 5, 6]
+
+
+
+b. generating list from a portion of the list
+nums6 = [1,2,3,4,5,6]
+nums7 = nums6[1:3]
+nums7
+[2, 3]
+
+
+**************************************************
+accessing List elements:
+the index of list elements can be positive or negative
+
+List index starts with 0 in left to right (positive index) movement and
+-1 when we move from right to left (negative index)
+
+index 0 refers to the first element in the list and -1 refers to the last element in the list
+list1 = [1,2,3,4,5,6]
+list1[0]
+>>> list1[0]
+1
+>>> list1[1]
+2
+>>> list1[2]
+3
+>>> list1[-1]
+6
+>>> list1[-2]
+5
+if we try to access an index which does not exist then it displays an error:
+list Index out of range
+
+************************************************
+traversing a list
+1. using 'in' operator:
+list1 = [1,2,3,4,5,6]
+for i in list1:
+    print(i)
+
+
+2. using range() function
+list1 = [1,2,3,4,5,6]
+n = len(list1)
+for i in range(n):
+    print(list1[i])
+
+
+************************************************
+Comparing Lists:
+two lists of same type can be compared the result would be either True or False depending
+upon the values in the lists.
+if we try to compare two different type of lists than it would generate error
+list1 = [1,2,3,4,5,6]
+list2 = [1,2,3,4,5,6]
+list3 = [1,1,3,4,5,6]
+>>> list1>list2
+False
+>>> list1==list2
+True
+>>> list1>list3
+True
+
+
+Operations on List:
+
+1. Concatenation
+2. Replication/Repetition
+3. Membership Testing
+4. Slicing
+5. Indexing
+
+1. Concatenation
+
+items can be concatenated in a list with + operator
+
+>>> list1 = [1,2,3,4,5,6]
+>>> list1 = list1 + [55,45,22]
+>>> list1
+[1, 2, 3, 4, 5, 6, 55, 45, 22]
+
+
+>>> list1 = [1,2,3,4,5,6]
+>>> list2 = [7,8,9]
+>>> list3 = list1 + list2
+>>> list3
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+2. Replication/Repetition
+* (Asterisk) operator is used to replicate the list 
+
+>>> list2 = [7,8,9]
+>>> list2*3
+[7, 8, 9, 7, 8, 9, 7, 8, 9]
+here the original list2 is not updated/modified. 
+>>> list2
+[7, 8, 9]
+the output of the replication can be stored in another list if required
+>>> list3 = list2*3
+>>> list3
+[7, 8, 9, 7, 8, 9, 7, 8, 9]
+
+
+
+3. Membership Testing
+IN operator is used to check whether the item is a member of list or not
+
+>>> list2 = [7,8,9]
+>>> 7 in list2
+True
+>>> print(7 in list2)
+True
+
+>>> days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+>>> mon in days
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'mon' is not defined
+
+here mon is considered as a variable so NameError displayed
+
+>>> 'mon' in days
+False
+
+here 'm' in 'mon' is in small case and python is a case-sensitive language
+so result is False
+
+>>> 'Mon' in days
+True
+
+IN operator is also used in the for loop to fetch the elements of the list
+days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+for day in days:
+    print(day)
+
+
+Mon
+Tue
+Wed
+Thu
+Fri
+Sat
+Sun
+
+
+4. Slicing
+Slicing is done to fetch some particular portion of the list
+list[start:stop:step]
+
+if start value is missing then it assumes it as 0
+if stop value is missing then it assumes it as the length of the list
+if step is missing then it assumes it to as 1
+
+>>> list1 = list('Test String')
+>>> list1
+['T', 'e', 's', 't', ' ', 'S', 't', 'r', 'i', 'n', 'g']
+>>> list1[1:4]
+['e', 's', 't']
+>>> list1[:4]
+['T', 'e', 's', 't']
+>>> list1[4:]
+[' ', 'S', 't', 'r', 'i', 'n', 'g']
+>>> list1[:]
+['T', 'e', 's', 't', ' ', 'S', 't', 'r', 'i', 'n', 'g']
+>>> list1[1::2]
+['e', 't', 'S', 'r', 'n']
+>>> list1[1:6:2]
+['e', 't', 'S']
+
+
+5. Indexing
+index value can be used to fetch the value at that index
+>>> days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+>>> days[1]
+'Tue'
+>>> days[-1]
+'Sun'
+
+
+***********************************************************************
+
+Built-in function of List:
+
+1. append()
+to add a single item at the end of the List.
+
+list.append(item)
+
+list1 = [1,2,3]
+list1.append(4)
+list1
+[1, 2, 3, 4]
+
+
+2. extend()
+to add another list at the end of list or to add multiple values as a list
+
+>>> list1.extend([5,6,7])
+>>> list1
+[1, 2, 3, 4, 5, 6, 7]
+
+list2 = [9,10]
+list1.extend(list2)
+list1
+[1, 2, 3, 4, 5, 6, 7, 9, 10]
+
+3. insert()
+to insert an element/object at a specific index.
+this function takes 2 arguments 1-Index where the value is to be inserted
+2-value/object to be inserted
+
+list.insert(index_number,item)
+
+>>> list1 = [1,2,3]
+>>> list1.insert(2,22)
+>>> list1
+[1, 2, 22, 3]
+>>> list1.insert(2,[33,44])
+>>> list1
+[1, 2, [33, 44], 22, 3]
+>>> list2 = [9, 10]
+>>> list1.insert(2,list2)
+>>> list1
+[1, 2, [9, 10], [33, 44], 22, 3]
+
+
+4. reverse()
+to reverse the order of elements in the list
+
+>>> days
+['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+>>> days.reverse()
+>>> days
+['Sun', 'Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon']
+
+>>> list1
+[1, 2, [9, 10], [33, 44], 22, 3]
+>>> list1.reverse()
+>>> list1
+[3, 22, [33, 44], [9, 10], 2, 1]
+
+5. index()
+returns the index number of the first match in the list
+if the searched item is not present in the list a ValueError is generated
+list_name.index(value,start,stop)
+start and stop are optional
+if start and stop are not specified then whole list is searched
+otherwise the specified portion is searched
+>>> list1 = [1,2,3,4,3,6,7]
+>>> list1.index(3)
+2
+>>> days = ['Sun', 'Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon']
+>>> days.index('Sat')
+1
+
+6. update the value in list:
+list_name[index] = new_value
+
+>>>list1 = [1,2,3,4,5,6,7]
+>>>list1[2]=55
+>>>list1
+[1, 2, 55, 4, 5, 6, 7]
+
+7. len()
+returns the length of list
+len(list_name)
+
+>>>len(list1)
+7
+
+8. sort()
+this function sorts the items of the list, by default in ascending order.
+the items in the list are replaced with the values in sorted order. 
+i.e. the original list is updated.
+
+list_name.sort()
+
+to sort the list in reverse order use reverse=True
+
+
+>>> list1 = [113,24,13,204,50,6,17]
+>>> list1.sort()
+>>> list1
+[6, 13, 17, 24, 50, 113, 204]
+>>> list1.sort(reverse=True)
+>>> list1
+[204, 113, 50, 24, 17, 13, 6] 
+
+
+9. clear()
+clear method removes all the items from the list and makes the list empty
+
+list1.clear()
+
+>>> list1
+[204, 113, 50, 24, 17, 13, 6]
+>>> list1.clear()
+>>> list1
+[]
+
+10. count()
+returns the number of occurrence of the item in the list
+
+>>> list1 = [1,2,3,4,3,6,3]
+>>> list1.count(3)
+3
+
+11. max()
+returns the element with maximum value in the list
+
+>>> list1 = [1,2,3,4,5,6,7]
+>>> max(list1)
+7
+
+>>> list2 = ['A','B','c']
+>>> max(list2)
+'c'
+'c' has higher ASCII value then 'A'
+
+
+12.min()
+returns the element with minimum value in the list
+>>> list1 = [1,2,3,4,5,6,7]
+>>> min(list1)
+1
+>>> list2 = ['A','B','c']
+>>> min(list2)
+'A'
+
+**********************************************************
+
+
+Deletion Operations:
+
+a. pop()
+b. remove()
+c. del()
+
+a. pop()
+it removes the element from the given index in the list if index is provided
+if index is not provided then last item is removed
+it returns the deleted item also
+>>> list1 = [1,2,3,4,3,6,9]
+>>> list1.pop(2)
+3
+>>> list1
+[1, 2, 4, 3, 6, 9]
+>>> list1.pop()
+9
+>>> list1
+[1, 2, 4, 3, 6]
+
+negative index can also be used to remove the items
+>>> list1.pop(-2)
+3
+>>> list1
+[1, 2, 4, 6]
+
+the value returned by the pop function can be stored to a variable also
+>>>x = list1.pop()
+>>> x
+6
+
+b. del()
+del statement remove the item on the specified index from  the list but does not return
+the deleted value
+
+del list_name [index_number]
+
+>>> list1 = [1,2,3,4,5,6,7]
+>>> del list1[3]
+>>> list1
+[1, 2, 3, 5, 6, 7]
+
+if an out of range index is provided to del or pop then IndexError message is displayed
+
+del with slicing:
+>>> list1 = [1,2,3,4,5,6,7]
+>>> del list1[2:4]
+>>> list1
+[1, 2, 5, 6, 7]
+
+c. remove()
+when we want to remove the item with its value not index
+
+>>> list1 = [1,2,3,4,5,6,7]
+>>> list1.remove(4)
+>>> list1
+[1, 2, 3, 5, 6, 7]
+
+
+*******************************************
+List comprihensions:
+List comprehension offers a shorter syntax when you want to create a new list based on the values of an existing list
+or on the basis of any one line function.
+we can create a lsit by providing some formula/operation in the list brackets
+
+>>> fruits = ['Apple','Banana','Orange','Pineapple']
+>>> length=[len(f) for f in fruits]
+>>> length
+[5, 6, 6, 9]
+
+>>> evens = [e for e in range(20) if e%2 == 0]
+>>> evens
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+*************************************************
+enumerate()
+Enumerate function returns a tuple containing the index number/counter and the item
+enumerate(iterable, start=0)
+iterable can be any object that supports iteration like list, tuple, string etc.
+start is optional. By default, it starts with 0. if we want to start the counter value with
+some specific value then we can specify that value. but the value of the iterable would
+start from the index 0 i.e. the first item in the iterable not from the start point specified
+in the enumerate function.
+>>> names = ['Amit','Dinesh','Rajesh','Vikram']
+>>> names
+['Amit', 'Dinesh', 'Rajesh', 'Vikram']
+>>> for idx,name in enumerate(names):
+...     print(idx,name)
+...
+0 Amit
+1 Dinesh
+2 Rajesh
+3 Vikram
+>>> for idx,name in enumerate(names,start=45):
+...     print(idx,name)
+...
+45 Amit
+46 Dinesh
+47 Rajesh
+48 Vikram
+
+>>> for idx,name in enumerate(names,100):
+...     print(idx,name)
+...
+100 Amit
+101 Dinesh
+102 Rajesh
+103 Vikram
+
+using enumerate with a string
+>>> s = "This is"
+>>> for i,word in enumerate(s):
+...   print(i," : ",word)
+...
+0  :  T
+1  :  h
+2  :  i
+3  :  s
+4  :
+5  :  i
+6  :  s
+
+
+
+*******************************************
+choice() 
+This method returns a randomly selected element from the given sequence
+
+import random
+
+fruits = ["apple", "banana", "cherry"]
+print(random.choice(fruits))
+
+x = "WELCOME"
+print(random.choice(x))
+
+Output: 
+banana
+L
+*************************************
+random.Shuffle()
+To Shuffle the items in the list :
+
+import random
+
+fruits = ["apple", "banana", "cherry"]
+random.shuffle(fruits)
+
+print(fruits)
+
+Output:
+['banana', 'cherry', 'apple']
+*************************************
+.split()
+Split is used to convert a string into a list and each word is stored as a list item:
+txt = "This is a test string"
+
+x = txt.split()
+
+print(x)
+
+Output:
+['This', 'is', 'a', 'test', 'string']
+*********************
+.join()
+This method joins all the items in the sequence(list,tuple,dictionary) with the given separator 
+and returns as a sting 
+
+list1 = ["Ajay", "Ram", "Vijay"]
+list2 = ['A','B','C']
+
+x = "--".join(list1)
+y="".join(list2)
+
+print(x)
+print(y)
+
+Output:
+Ajay--Ram--Vijay
+ABC
+
+**********************************
+global keyword is used to access the global variable.
+any change applied to the gloabal variable will be visible 
+throughout the program in subsiquent statements
+Ex.
+
+list1=list()
+list2=list()
+
+def func1():
+    global list1
+    list1=[1,2]
+    list2=[3,4]
+    print('List1 in function 1 ',list1)
+    print('List2 in function 1 ',list2)
+
+func1()
+list1.append(9)
+list2.append(9)
+print('List 1 in main ',list1)
+print('List 2 in main ',list2)
+
+Output:
+List1 in function 1  [1, 2]
+List2 in function 1  [3, 4]
+List 1 in main  [1, 2, 9]
+List 2 in main  [9]
+********************************************
+1. Write a program to input a list and sort it without using built-in functions
+2. Write a program to prepare captcha from a pre-prepared list of characters
+3. Write a program to input a list and perform all the operations on the list
+	like min,max,sort etc.
+4. Write a program to print the frequencies of each number in the given list
+5. Write a program to print the frequencies of vowels in the given string
+6. Write a program to print the frequencies of even number and odd number and their respective sum
+7. Write a program to print the prime number available in the given list
+8. Write a program to encrypt a given string  and decrypt it.
+********************************************
+
+9. Write a program to find common elements between two lists.
+10. Write a program using list comprehension to create a new list with the squares of all the elements in the original list.
+11. Write a program to merge two lists into a single list.
+12. Write a program to find the second largest element in a list.
+13. Write a program to rotate the elements of a list by a specified number of positions.
+14. Write a program to find the cumulative sum of elements in a list.
+15. Write a program to find all pairs of numbers in a list that add up to a given sum.
+16. Write a program to remove all occurrences of a specific element from a list.
+17. Write a program to remove duplicate elements from a list.
+18. Write a program to create a list of the duplicate elements from a given list.
+19. Write a program to reverse the elements in a list without using inbuilt function.
+20. Write a program to flatten a nested list.

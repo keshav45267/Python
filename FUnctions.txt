@@ -1,0 +1,290 @@
+functions:
+functions are small program modules which are used to break a large 
+program into small sections called functions
+
+def a():
+    print('I am in function A')
+
+
+def b():
+    print('I am in function B')
+
+
+def c():
+    print('I am in function C')
+
+
+a()
+b()
+c()
+
+
+******************
+def a():
+    print('I am in function A')
+	b()
+
+
+def b():
+    print('I am in function B')
+	c()
+
+
+def c():
+    print('I am in function C')
+
+
+a()
+b()
+c()
+
+
+***************************
+functions can be categorised in 3 ways
+1. Built-in
+2. Modules
+3. User-defined
+
+1. Built-in:
+a. Type conversion:
+int(), str(), float()
+b. input function
+c. eval()
+d. min(), max(), abs(), type(), len(), round(), range()
+
+round(5.46) 5
+round(5.56) 6
+
+round(5.46,0) 5.0
+round(5.56,0) 6.0
+
+round(5.4645,1) 5.5
+round(5.5656,2) 5.57
+
+round(52345.5656,-1)   52350.0
+round(52345.5656,-2)   52300.0
+round(52465.5656,-2)   52500.0
+
+**********************************************************
+modules:
+A module is a file that contains a collection of related functions
+Large projects are devided into many small individual project apps called modules
+a module is a file containing functions and variables defined in separate file.
+
+importing modules:
+1. import math
+2. from math import sqrt, sin, cos
+Formal Parameter1
+
+Math nodule:
+ceil(x), floor(x), pow(x,y), sqrt(x), sin(x), cos(x), tan(x)
+sin,cos,tan returns value in radians 
+
+1. randrange() 
+generates a number between  its lower and upper number
+by default the lower number is 0 and upper is 1 
+import random
+random.randrange(30)
+returns a random number between 0 & 29. Includig 0, Excluding 30
+
+2. random()
+generates a float number between 0 & 1. Includig 0, Excluding 1
+to generate floating point number between 15 & 20 
+num = random.random()*5 + 15
+
+3. randint(x,y)
+generates a random integer between x & y both inclussive i.e. x<=N<=y
+random.randint(10,20)
+
+4. uniform(x,y)
+generates a random floating point number between two numbers x<=F<y
+random.uniform(1,100)
+
+5. choice()
+generates a random selection from a sequence like list,tuple,dictionary
+random.choice(['A','B','C','D'])
+
+6. shuffle()
+shffels the content of the list
+l = ['A','B','C','D','E','F','G']
+random.shuffle(l)
+
+
+****************************************************
+
+User defined functions:
+functions defined by user itself for own use
+
+def function_name(,Formal Parameter2,Formal Parameter3,.... ):
+	statment1
+	statment2
+	statment3
+	.
+	.
+	.
+	return value1,value2.....
+
+a function may or may not return any value
+a function can return more than 1 vlue also
+a function returns the value of an expression.
+if a function doesnot have a return statment the it returns None by default
+
+The variables that receives the supplied value are called formal parameters or 
+formal arguments
+and the values supplied during the calling of a function is called actual parameters 
+or actual arguments
+
+Types of arguments:
+1. Positional Arguments
+2. Default Arguments
+3. Keywoard Arguments
+4. Variable Length Arguments
+ 
+1. Positional Arguments: Positional Arguments are arguments passed to a function in 
+correct positional order:
+
+def diff(num1, num2):
+	return num1 - num2
+
+n1 = int(input('Enter First Number '))
+n2 = int(input('Enter Second Number '))
+print(diff(n1, n2))
+print(diff(n2, n1))
+print(diff(num1=n1, num2=n2))
+print(diff(num2=n1, num1=n2))
+print(diff(20, 10))
+print(diff(10, 20))
+print(diff(60, num2=50))
+print(diff(60))
+#print(diff(num1=60, n2))
+
+
+
+if the order of the arguments is changed result is changed.
+if number of arguments passed is changed error is generated
+
+
+2. Default Arguments:
+a default argument is a default value provided to the formal argument
+while its defined. 
+If the value of actual argument is not supplied while calling a function
+then the default value in the formal parameters is used however if value
+is supplied while calling the function then the supplied value is used.
+
+def greet(name='Ajay', msg='Good Morning'):
+    print(msg, name)
+
+
+greet()
+greet('Amit', 'How are you')
+greet(name='Vijay', msg='Hello')
+greet(msg='Hello')
+greet(name='Aakash')
+greet('Vijay', msg='Hello')
+#greet(name='Vijay', 'Hello')
+
+
+Positional Arguments should follow Keywoard Arguments otherwise it would
+generate an error.
+
+3. Keywoard Arguments:
+if we want to specify only some of the arguments in function call instead of 
+suppling all the arguments then valueof such parameters can be provided by
+using their name insteadof the position (order). These are called
+Keywoard arguments or named arguments.
+
+we can use both positional and keyword arguments simultaniously.
+but first we should use positional arguments and then keyword arguments.
+
+using keyword arguments we need not remember the sequence/order/position of the 
+variable/arguments
+we can specify the valueof onlythose parameters which we want to, as other 
+parameters have default argument values.
+
+4. Variable Length Arguments
+sometimes we need to operate multiple number of arguments i.e. the number
+of arguments to be supplied are of variable length.
+in such cases we use Variable Length Arguments functions.
+variable Length Arguments are declared with * (asterisk) symbol 
+
+we can call such function by passing any number of arguments including 
+zero number. internally all these values are represented as a tuple
+
+
+def sum_n(*nums):
+    total = 0
+    for value in nums:
+        total += value
+    print('Sum of ', nums, 'is', total)
+
+
+sum_n()
+sum_n(10)
+sum_n(1,2)
+sum_n(1,2,3,4)
+sum_n(1,2,3,4,5,6,7,8,9,10)
+
+
+***********************************************************************
+
+Scope of a variable:
+scope of a variable refers to the part of the program where it is visible, 
+i.e. the area where we can access/use it.
+1. Global Variables
+2. Local Variables
+
+1. Global Variables are assigned at the top level of the module/program
+the scope of Global variables is throughout the programs
+2. Local Variables names are assigned inside a function or loop
+the scope of Local Variables is inside the function or loop only.
+
+***********************************************************************
+
+Main
+
+when we want to use an user defined function from aother python scrip/program
+we need to import that program in the current program. 
+when we import a python module in another python program then all the code in the 
+called module is executed and the output/result of the previous program is also shown.
+to let it not happen we need to add a if condition in our called module like this
+
+if __name__ == '__main__':
+
+and place all our dependent statments of the module/program under this if statment
+so that these statments would be executed only when the module is run as script/program
+and not as a imported module.
+when a module/program is executed then python checks whether the name of current module is 
+__main__ or not. now when the program is executed then it is run as __main__ and when 
+it is used as a module from another program then the condition 
+
+if __name__ == '__main__':
+
+result in false and that portion of the program is skipped and the function in that module
+gets executed only when it is called by the program.
+
+refer programs:
+func_variable_length
+func_variable_length_main
+func_main
+
+
+***********************************************************************
+
+Recursion:
+
+when a function calls itself it is called a recursive function.
+Important points:
+1. There must be a if condition containing the terminating condition for which 
+we want to implement recursion. This condition is called the base case for the problem
+2.  when a recursive function is called the function calls are pussed on the stack
+until the terminating condition is encountered. When the terminating condition
+is encountered all the recursive calles stacked are remove from the stack and executed
+one by one in the reverse order of input. i.e. the last call executed first and then 
+second last and so on. untill the stack is empty.
+
+Disadvantages of recursion:
+it consumes more storage space
+less efficient in speed and execution time.
+
+refer func_recur programs
+
