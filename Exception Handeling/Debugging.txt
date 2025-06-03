@@ -1,0 +1,63 @@
+The process of finding errors in the program is known as debugging.
+python debugger is already installed by default along with the python package to use debugger we need to import the debugger in the program
+
+import pdb
+
+to start debugging the program we need to go to terminal first
+ on the terminal we need to navigate to the folder where the program to be debugged is present
+now we have to run the debugging program from the terminal
+the command for terminal is
+
+python -m pdb Python_File_Name
+
+ex.
+python -m pdb debug_1.py
+
+debugging of the program can be done in two ways:
+1. without break point
+2. with break point
+
+1. Without Break Point:
+in this process all the statements in the program are executed one by one
+according to the commands provided by the user
+
+when the debugging is initiated with the command provided above
+the debugging program has started and the program execution is halted at first
+statement of the program
+we can go through all the commands one by one
+once the program is completed it would be restarted again
+
+important commands:
+1. p : print the current value of the variable ex. p x or  p y or p x,y
+2. n : go to next command. if the next command is a function call then it would execute the
+        function and return to the next command in the main program
+3. s : step into i.e. take the next step in the program. if the next command is a function call
+        then it would step into the first statement of the function and would wait for the next
+        command from the user.
+4. c : continue execution
+5. h : for help
+6. break : to add break point in the program execution ex. break 9
+7. where : displays the current position of the curser in the program execution
+             i.e. the current statement in execution
+8. if enter is pressed without tying any command then the last executed command is executed again
+9. q : to quit the debugging mode
+10. whatis : to check the datatype of the variable ex. whatis x
+
+
+2. with break point:
+if a break point is added in the program then the program debugger would
+either halt at the input statements or on the break points in the program
+
+Breakpoint can be added in 2 ways:
+1. within the program before starting debugging.
+2. during debugging
+
+1. to add a break point in the program before starting execution
+we need to import the pdb module
+import pdb
+then go to the statement where we want to add the break point and add pdb.set_trace()
+just above that statement.
+
+2. to add  break point during debugging we can use break command
+ex. break 2
+now the program execution would halt at statement no 2

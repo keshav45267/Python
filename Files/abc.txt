@@ -1,0 +1,54 @@
+this is
+sd
+dgdd
+f
+gg
+g
+
+
+
+
+
+
+dgfd
+g
+g
+gfg
+gfg
+
+
+hh
+
+
+
+dfgfdghghd
+h
+# Program to write a line to a file and read it
+# write function takes string as input to write it to file
+# to write data in different lines we need to provide \n
+fn = input("Enter the File Name to open ")
+
+
+# Program to write a line to a file and read it
+# write function takes string as input to write it to file
+# to write data in different lines we need to provide \n
+fn = input("Enter the File Name to open ")
+
+# Program to write a line to a file and read it
+# write function takes string as input to write it to file
+# to write data in different lines we need to provide \n
+fn = input("Enter the File Name to open ")
+
+
+cbfgh
+fgf
+
+Roll No   : 1
+Name      : Amit
+Department: cse
+Roll No   : Vikram
+Name      : vikram
+Department: ece
+Roll No   : 45
+Name      : Test
+Department: mech

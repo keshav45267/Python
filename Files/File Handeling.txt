@@ -1,0 +1,226 @@
+File is a document or data stored on a permanent storage device which can
+be read, written ot rewritten according to requirement.
+Every file is assigned a name that is used to uniquely identify 
+a particular file by the user and operating system
+
+operations on file:
+1. read
+2. write
+3. append
+
+to operate a file from python we need a file handler.
+
+a file handler object can be created by open() or file() function
+
+1. open():
+open function is used to open a file. it can be used to open the file
+to perform operations like Read, Write and Append
+
+file_handler_variable = open(file_name,access_mode)
+
+file_handler_variable is a variable which keeps track of the current
+position of the cursor in the file from where the operations can be performed.
+
+file_name is the name of the file which user wants to open for performing
+the required operations
+
+access_mode is the mode in which the particular operation can be performed
+access_mode is optional argument. if any access_mode is not specified
+the python opens the file in read mode.
+
+the file to be opened should be in the same folder from where the program is executed.
+if the file is not found then python would raise an FileNotFoundError.
+
+File Modes:
+1. r :  Opens the file for reading only. 
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then FileNotFoundError would be raised.
+2. rb : Opens the file for reading only in binary format.
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then FileNotFoundError would be raised.
+3. r+ : Opens file for both reading and writing. 
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then FileNotFoundError would be raised.
+4. rb+ :Opens file for both reading and writing in binary mode. 
+		Pointer would be placed at the beginning of the file.
+		if the requested file does not exist then FileNotFoundError would be raised.
+5. w  : Opens the file for writing only. 
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the previous content is lost
+6. wb : Opens the file for writing in binary mode only. 
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the 
+		previous content is lost
+7. w+ : Opens the file for both writing and reading. 
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the 
+		previous content is lost
+8. wb+ :Opens the file for both writing and reading in binary format. 
+		Pointer would be placed at the beginning of the file.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the 
+		previous content is lost
+9. a :  Opens the file for appending only. 
+		Pointer would be placed at the end of the file for appending data.
+		If the requested file does not exist then a new file is created.
+		
+10. ab :Opens the file for appending in binary mode only. 
+		Pointer would be placed at the end of the file for appending data.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the 
+		previous content is lost.
+11. a+ :Opens the file for both appending and reading. 
+		Pointer would be placed at the end of the file.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the 
+		previous content is lost.
+12. ab+:Opens the file for both appending and reading in binary mode. 
+		Pointer would be placed at the end of the file for appending data.
+		If the requested file does not exist then a new file is created.
+		If the file already exist then it overwrites the existing file content and all the 
+		previous content is lost.
+
+ex. 
+fh = open("test.txt","w")
+
+*****************
+close():
+close() method is used to close the open file.
+close method flushes any unwritten data in the buffer to the file and close the file.
+after closing the file any operation can not be performed in the program 
+until it is reopened.
+
+python automatically closes a file when the reference object i.e. the file handler 
+is reassigned to some other file.
+
+it is a good practice to close all the files before exiting the program
+
+file_handler_variable.close()
+
+ex.
+fh.close()
+
+******
+attributes of file:
+once the file is opened the following attributes can be accessed
+
+1. name: name of the file 
+fh.name
+2. mode: Mode in which the file is opened
+fh.mode
+3. closed: returns True if the file is closed else False
+4. readable: returns True if the file is readable else False
+
+*************************************
+
+Reading from a file:
+Read operation can be performed in 4 ways:
+1. read()
+2. read(n)
+3. readline()
+4. readlines()
+
+1. read():
+to read the entire data in the file 
+fstr = fh.read()
+
+2. read(n): 
+to read a specific size(number of characters) string form the file 
+starting from the current cursor position in the file
+if the size is not specified or a negative value is supplied then the 
+whole content of the file is read.
+
+fstr = fh.read(5)
+
+3. readline():
+to read only one line from the file.
+
+fline = fh.readline()
+
+4. readlines()
+to read all lines from the file into a list.
+flist = fh.readlines()
+
+***********************************
+
+Writing to file
+data can be written in a file by 2 ways
+1. write()
+2. writelines()
+
+1. write() :
+ write method takes string as parameter and writes the string to the file.
+ we need to add '\n' to the end of the string to write the data with 
+ end of line (EOL) character otherwise the whole file would be written as 
+ a single line.
+ for storing numeric data we need to convert it to string datatype using 
+ str() function ex. str(x)
+ 
+ file_handler_variable.write("This is a test String\n")
+ 
+2. writelines():
+to write string datatypes like list, tuple and strings etc. writelines()
+method is used. 
+file_handler_variable.writelines(sequence)
+
+fh.write("This is")
+fh.write("the test\n")
+fh.write("string")
+
+EOL character is required wherever we want to input  the new line in the file
+it is not added implicitly
+
+l1 = ["This\n","is\n","the\n","test\n","string"]
+fh.writelines(l1)
+
+********************************
+with statement:
+to group file operations within a block with statement is used:
+with statement ensures that all the resources allocated to the file
+object gets deallocated automatically when we exit from the with block.
+we need not close the file explicitly while using it in with statement.
+
+with open() as file_object:
+	statement1
+	statement2
+	.
+	.
+	
+**************************************
+
+Appending to file:
+
+to add data to the end of file the file should be opened in append mode
+
+fh = open("test.txt", "a")
+
+fh.write("This is appended file")
+
+this would add the string at the end of the file.
+
+
+*********************************************
+
+Binary File Operations:
+pickle module is required to operate file in binary mode 
+
+it is used to store and retrieve the structured datatypes like list or dictionary
+to and from the file.
+"pickling" refers to process of converting a structure to a byte stream before writing
+it to a file. 
+to read binary data from file and convert it into the original structure "unpickling"
+process is used.
+
+to store binary data we use dump method
+pickle.dump(Structure_object, file_object)
+
+pickle.dump(l1,fh)
+
+for reading data from the binary file we need load method
+Structure_object = pickle.load(file_object)
+
+l1 = pickle.load(fh)
+

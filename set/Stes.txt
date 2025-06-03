@@ -1,0 +1,212 @@
+Set:
+A set is a collection of unique items.
+Set items are unordered, unchangeable, and do not allow duplicate values.
+
+declare a set
+set1 = set()
+
+>>> set1={1,2,3,2,4,3,1,5,2,6}
+>>> set1
+{1, 2, 3, 4, 5, 6}
+
+Unordered means that the items in a set do not have a defined order.
+
+Set items can appear in a different order from the order they were stored/declared, 
+
+Set items cannot be referred to by index.
+
+>>> set1={'One','Two','Three','Four'}
+>>> print(set1)
+{'Four', 'One', 'Three', 'Two'}
+>>> set1[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'set' object is not subscriptable
+
+>>> set1={1,2,3,2,4,3,1,5,2,6}
+>>> set1
+{1, 2, 3, 4, 5, 6}
+>>> set2={31,12,3,12,45,3,1,5,2,6}
+>>> set2
+{1, 2, 3, 5, 6, 12, 45, 31}
+
+
+Set items are unchangeable, meaning that we cannot change the items 
+after the set has been created 
+ but we can remove items and add new items.
+
+
+*********************************
+1. Traversing set
+fruits = {"apple", "banana", "cherry"}
+
+for f in fruits:
+  print(x) 
+
+apple
+cherry
+banana
+
+2.  Membership test with in operator
+
+>>> 'mango' in fruits
+False
+>>> 'mango' not in fruits
+True
+
+
+3. Add a single item to set  
+
+Add()
+
+To add one item to a set 
+
+fruits.add("orange")
+>>> fruits
+{'apple', 'cherry', 'banana', 'orange'}
+
+4. Add multiple values in the form of set to a set or merging two sets
+
+update()
+
+fruits = {'apple', 'cherry', 'banana', 'orange'}
+fruits2 = {'Almond','Cashew nuts','Dates'}
+vegetables = {'carrot','ginger','cucumber'}
+
+>>> fruits.update(fruits2)
+>>> fruits
+{'apple', 'cherry', 'Cashew nuts', 'banana', 'Dates', 'Almond', 'orange'}
+
+here the sequence of items is changed 
+
+
+5. Remove Items from set
+To remove an item from a set we use remove() or discard() method.
+
+>>> fruits = {'apple', 'cherry', 'Cashew nuts', 'banana', 'Dates', 'Almond', 'orange'}
+>>> fruits.remove('orange')
+>>> fruits
+{'apple', 'cherry', 'Cashew nuts', 'banana', 'Dates', 'Almond'}
+
+If the item to be removed does not exist in set remove() will raise an error.
+however, if the item to be removed does not exist in set discard() will NOT raise an error.
+
+>>> fruits.discard('cherry')
+>>> fruits
+{'apple', 'Cashew nuts', 'banana', 'Dates', 'Almond'}
+>>> fruits.remove('orange')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'orange'
+>>> fruits.discard('orange')
+>>>
+
+6. pop()
+
+pop method can also be used to remove an item from the set but this method will remove the last item. 
+as sets are unordered, so we cannot know which item would get removed. pop operation would be unpredictable
+pop method returns the itme which is removed whereas remove and discard do not return the item removed
+>>> fruits
+{'apple', 'Cashew nuts', 'Almond'}
+>>> fruits.pop()
+'apple'
+>>> 
+
+7. del()
+The del keyword will delete the set completely:
+
+>>> del fruits
+>>> fruits
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'fruits' is not defined
+
+8. union()
+
+The union() method returns a new set with all items from both sets:
+
+>>> set1 = {"a", "b" , "c"}
+>>> set2 = {1, 2, 3}
+>>>
+>>> set3 = set1.union(set2)
+>>> print(set3)
+{1, 2, 3, 'b', 'a', 'c'}
+>>>
+
+Both union() and update() will exclude any duplicate items
+
+9. intersection()
+The intersection() method will return a new set, that only 
+contains the items that are present in both sets.
+
+>>> x = {"apple", "banana", "cherry"}
+>>> y = {"google", "microsoft", "apple"}
+>>>
+>>> z = x.intersection(y)
+>>> z
+{'apple'}
+>>>
+
+10. difference()
+returns the values of set1 which are not present in set2
+
+>>> x = {"apple", "banana", "cherry"}
+>>> y = {"google", "microsoft", "apple"}
+>>>
+>>> z = x.difference(y)
+>>> z
+{'cherry', 'banana'}
+
+
+***********************************
+1. len()
+
+>>> len(set1)
+4
+
+>>> set3 = {1,'A',456.78,'Dinesh Kumar'}
+>>> set3
+{456.78, 1, 'A', 'Dinesh Kumar'}
+
+2. copy()
+As sets are not subscriptable i.e. we can not use index
+so to make a copy we can not use slice method
+to copy a set use = operator or .copy() function
+>>> s1 = {1,2,3}
+>>> s2=s1.copy()
+>>> s1
+{1, 2, 3}
+>>> s2
+{1, 2, 3}
+>>> id(s1)
+2350023649312
+>>> id(s2)
+2350023647296
+
+now s1 and s2 would have same elements but both would be declared at different
+memory space and would be independent of each other
+
+however, we can use equal operator to make a copy of the set also but
+when we use equal operator then both the variables share the same memory
+space and the change in the values of one variable would be reflected in the
+other variable also
+ 
+ 
+ >>> s3=s1
+>>> s1
+{1, 2, 3}
+>>> s3
+{1, 2, 3}
+>>> id(s1)
+2350023649312
+>>> id(s3)
+2350023649312
+>>> s1.add(55)
+>>> s1
+{1, 2, 3, 55}
+>>> s3
+{1, 2, 3, 55}
+>>> s2
+{1, 2, 3}
+>>>
+

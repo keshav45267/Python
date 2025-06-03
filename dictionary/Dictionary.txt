@@ -1,0 +1,418 @@
+Dictionary:
+Dictionary is a sequence datatype in which unordered items are stored as key : value pair.
+it can be assumed as a mapping between a set of keys and a set of values
+example :
+contact list in the mobile have names and number association
+dictionary itself which have word and its meaning
+
+Key Points:
+1. all the items are enclosed in curly braces {}
+2. each key is separated from its value by a colon :
+3. all the items (key:value pairs) are separated by comma (,)
+3. each key maps to a value and this association is called key-value pair
+4. keys are unique within a dictionary while values may not be 
+5. Dictionary is mutable i.e. we can add new item or change the value of an existing item
+
+
+**************************************
+
+
+creating a dictionary:
+
+dictionary_name = {key1:value1,key2:value2....}
+ 
+ d1 = {}
+ d2 = dict()
+ d3 = {'S':'Summer','W':'Winter','R':'Rainy','A':'Autumn'}
+ d4 = {1:'One',2:'Two',3:'Three'}
+ d5 = {1:'CSE',2:'ECE',3:'ME'}
+ 
+d6 = {'Alpha':['A','B','C'],'days':('Mon','Tue','Web'), 'Amount':5000,'Per':78.98}
+
+immutable type can be used as keys like numbers,boolean, string, tuple 
+i.e. we can not use List and dictionaries as keys in the dictionary
+
+however we can use List and dictionaries as values in the dictionary
+**************************************
+hash() is a module that is used to return the hash value of an object. 
+hash method is used to return integer values that are used to 
+compare dictionary keys using a dictionary look up feature.
+
+for example:
+
+x=10
+y=3.55
+name='Topper Branins'
+t1 = (11,22,33)
+l1 = [1,2,3,4]
+s1 = {6,7,8,9}
+d1 = {'name':'Topper Brains'}
+print("Hash of 1 : ",hash(1))
+print("Hash of 100 : ",hash(100))
+print("Hash of x : ",hash(x))
+print("Hash of y : ",hash(y))
+print("Hash of name : ",hash(name))
+print("Hash of t1 : ",hash(t1))
+# print("Hash of l1 : ",hash(l1))
+# print("Hash of s1 : ",hash(s1))
+# print("Hash of d1 : ",hash(d1))
+
+Output:
+Hash of 1 :  1
+Hash of 100 :  100
+Hash of x :  10
+Hash of y :  1268213655067531267
+Hash of name :  -3733767919818750353
+Hash of t1 :  -5452407625778563439
+
+*****************************************
+adding data to dictionary:
+we can add data to dictionary as
+
+dictionary_name[key] = Value
+
+d1 = {}
+d1[1] = 'One'
+d1['Name']='Amit'
+d1['fee'] = 23000.50
+ 
+ >>> d1
+{1: 'One', 'Name': 'Amit', 'fee': 23000.5}
+
+**************************************
+
+
+accessing data from the dictionary
+to fetch the value from a dictionary we need a key
+
+>>> d1['Name']
+'Amit'
+>>> d1['fee']
+23000.5
+>>> d1[1]
+'One'
+
+**************************************
+
+
+
+Traversing a Dictionary:
+
+to access each element in the dictionary we use in operator in for loop 
+
+d1 = {1: 'One', 'Name': 'Amit', 'fee': 23000.5}
+>>> for k in d1:
+...   print(k) 
+...
+1
+Name
+fee
+
+by default, for loop in dictionary iteration returns keys of the dictionary
+to obtain the values we need to use these keys to find the value in the dictionary
+
+>>> for item in d1:
+...     print(item,':',d1[item])
+...
+1 : One
+Name : Amit
+fee : 23000.5
+
+**************************************
+
+
+adding/updating the value of a key 
+data of value can be updated as 
+
+dictionary_name[key] = New_Value
+
+if the key already exists in the dictionary then its value is updated
+if the key does not exists in the dictionary then 
+the key value pair is added as new item in the dictionary at the end
+
+fee and name keys exists in the dictionary so their values would be updated
+>>> d1['fee']=50000
+>>> d1
+{1: 'One', 'Name': 'Amit', 'fee': 50000}
+>>> d1['Name']='Rajesh Kumar'
+>>> d1
+{1: 'One', 'Name': 'Rajesh Kumar', 'fee': 50000}
+
+
+branch kye does not exist in d1 so it would be added
+
+>>> d1['Branch']='C.S.E.'
+>>> d1
+{1: 'One', 'Name': 'Rajesh Kumar', 'fee': 50000, 'Branch': 'C.S.E.'}
+
+
+**************************************
+
+Merge two dictionaries:
+Two dictionaries can be mearged into one using update() function
+if same key exists in both the dictionaries the value of the key would be update 
+with the new value and new kev-value pair would be added
+dictionary1.update(dictionary2)
+
+>>> dict1 = {1:'One',2:'Two'}
+>>> dict2 = {3:'Three',4:'Four',5:'Five'}
+>>> dict1
+{1: 'One', 2: 'Two'}
+>>> dict2
+{3: 'Three', 4: 'Four', 5: 'Five'}
+>>> dict1.update(dict2)
+>>> dict1
+{1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five'}
+
+when same key exists in both the dictionaries:
+
+>>> dict4 = {1:'One',2:'Two'}
+>>> dict5 = {2:'Two Hundred',3:'Three',4:'Four',5:'Five'}
+>>> dict4.update(dict5)
+>>> dict4
+{1: 'One', 2: 'Two Hundred', 3: 'Three', 4: 'Four', 5: 'Five'}
+
+****************************************
+
+Removing item from dictionaries:
+an item can be removed from the dictionary with the help of key
+
+1. del command
+del command deletes the item from the dictionary and do not return any value
+del dictionary_name[key]
+
+>>> dict4
+{1: 'One', 2: 'Two Hundred', 3: 'Three', 4: 'Four', 5: 'Five'}
+>>> del dict4[2]
+>>> dict4
+{1: 'One', 3: 'Three', 4: 'Four', 5: 'Five'}
+
+2. pop() method
+
+pop method deletes the item from the dictionary and return the deleted value
+
+dictionary_name.pop(key)
+
+>>> dict4.pop(3)
+'Three'
+>>> dict4
+{1: 'One', 4: 'Four', 5: 'Five'}
+
+**********************************************
+
+Membership operator:
+
+in and not in operator can be used to check whether a particular key is present in the dictionary
+
+>>> dict4
+{1: 'One', 4: 'Four', 5: 'Five'}
+>>> 1 in dict4
+True
+>>> 2 in dict4
+False
+>>> 2 not in dict4
+True
+
+searchng an element in dictionary having large amount of data is faster than list
+
+*************************************************
+Dictionary Functions:
+
+1. len()
+returns number of key-value pairs in the dictionary
+
+>>> dict4
+{1: 'One', 4: 'Four', 5: 'Five'}
+>>> len(dict4)
+3
+
+2. clear()
+removes all items from the dictionary1
+
+>>> dict4
+{1: 'One', 4: 'Four', 5: 'Five'}
+>>> dict4.clear()
+>>> dict4
+{}
+
+3. get()
+get method returns the value for the given key
+if the key is not available then it returns default value
+if default value is not specified then it return None
+
+dictionary_name.get(key,default_value)
+
+>>> dict1 = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five'}
+>>> dict1.get(4)
+'Four'
+>>> dict1.get(5)
+'Five'
+>>> dict1.get(6)
+>>> print(dict1.get(600))
+None
+>>> dict1.get(6,'Not Found')
+'Not Found'
+
+4. items()
+it returns the contents of dictionary as a list of Tuples having Key-value pairs
+
+>>> dict1 = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five'}
+>>> d = dict1.items()
+>>> d
+dict_items([(1, 'One'), (2, 'Two'), (3, 'Three'), (4, 'Four'), (5, 'Five')])
+
+now d has a list of Tuples containing Key-value Pair
+we can use for loop to print the kev-value pair as below: 
+
+>>> for k,v in d:
+...     print (k,':',v)
+...
+1 : One
+2 : Two
+3 : Three
+4 : Four
+5 : Five
+
+5. keys()
+returns the list of keys from the key-value pair in the dictionary
+
+>>>dict1={1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five'}
+>>> dict1.keys()
+dict_keys([1, 2, 3, 4, 5])
+>>> d = dict1.keys()
+>>> d
+dict_keys([1, 2, 3, 4, 5])
+>>> for k in d:
+...     print(k)
+...
+1
+2
+3
+4
+5
+>>>
+
+6. values()
+returns the list of values from the key-value pair in the dictionary
+
+>>>dict1={1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five'}
+>>> d = dict1.values()
+>>> for v in d:
+...     print(v)
+...
+One
+Two
+Three
+Four
+Five
+>>>
+
+
+7. dict.fromkeys()
+To prepare dictionary from a list of Keys and a Value
+
+>>> list1=[1,2,3,4]
+>>> dict1 = dict.fromkeys(list1)
+>>> dict1
+{1: None, 2: None, 3: None, 4: None}
+
+>>> list2=['One']
+>>> dict2 = dict.fromkeys(list1,list2)
+>>> dict2
+{1: ['One'], 2: ['One'], 3: ['One'], 4: ['One']}
+
+>>> list2=['One','Two']
+>>> dict2 = dict.fromkeys(list1,list2)
+>>> dict2
+{1: ['One', 'Two'], 2: ['One', 'Two'], 3: ['One', 'Two'], 4: ['One', 'Two']}
+
+>>> keys = [1, 2, 3, 4]
+>>> values = ['test']
+>>> dict2 = dict.fromkeys(keys, values)
+>>> print(dict2)
+{1: ['test'], 2: ['test'], 3: ['test'], 4: ['test']}
+
+8. dict()
+Dict function declares an empty dictionary.
+ed = dict()
+dict function can be used to convert a sequence into a dictionary
+ say a  list of sub lists with 2 values each or list of tuples also
+>>> ed = dict()
+>>> ed
+{}
+
+>>> tlist = [['Name','Tarun'],['Class','ECE'],['Fee',30000]]
+>>> ed = dict(tlist)
+>>> ed
+{'Name': 'Tarun', 'Class': 'ECE', 'Fee': 30000}
+
+>>> tlist = [('Name','Tarun'),('Class','ECE'),('Fee',30000)]
+>>> tlist
+[('Name', 'Tarun'), ('Class', 'ECE'), ('Fee', 30000)]
+>>> ed = dict(tlist)
+>>> ed
+{'Name': 'Tarun', 'Class': 'ECE', 'Fee': 30000}
+
+dict function can be used with list of 2 values pair only
+if we provide more than 2 values in the list then it would generate a ValueError
+
+>>> tlist = [('Name','Tarun','vijay'),('Class','ECE','CSE'),('Fee',30000,50000)]
+>>> ed = dict(tlist)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: dictionary update sequence element #0 has length 3; 2 is required
+
+>>> ed
+{'Name': 'Tarun', 'Calss': 'ECE', 'Fee': 30000}
+>>> 'Name' in ed
+True
+>>> 'Name' in ed.keys()
+True
+>>> 'Tarun' in ed
+False
+>>> 'Tarun' in ed.values()
+True
+>>>
+
+9. zip()
+The zip() function returns a zip object, which is an iterator of tuples.
+This zip object can be converted to List/Tuple/Dictionary as required.
+The converted list/tuple object would contain List of set of Tuple objects
+to create a dictionary from two lists say keys  List and values Lists
+the size of dictionary would be equal to the smallest list
+
+num = [1, 2, 3, 4, 5, 6, 7]
+day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+num_day = dict(zip(num, day))
+print(num_day)
+{1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday', 7: 'Sunday'}
+
+
+# when the number of Keys and values differ then the dictionary would be formed up to the smaller list
+# when the number of keys < number of values
+num = [1, 2, 3, 4, 5, 6]
+day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+num_day = dict(zip(num, day))
+print(num_day)
+{1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
+
+
+# when the number of keys > number of values
+num = [1, 2, 3, 4, 5, 6, 7]
+day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+num_day = dict(zip(num, day))
+print(num_day)
+{1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
+
+print(sorted(num_day))
+
+
+************************************************************
+Write a program to create a dictionary from the key and values provided by the user
+Write a program to input the Data of Students and Display details according to the roll No in table format.
+Write a program to prepare a dictionary from given 2 list2 1. Keys List and 2. Values List
+Write a program to prepare a dictionary containing the words and its frequency in a given list
+Write a program to prepare a dictionary containing the words and its frequency in the given string
+Write a program to prepare a dictionary containing the words and its frequency in the given multiline string and display the maximum used word
+Write a program to sort the dictionary according to VALUES i.e. according to no of students in Department (Highest to lowest)
+************************************************************

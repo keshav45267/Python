@@ -1,0 +1,305 @@
+sometimes our program get terminated unexpectedly during execution
+this occours due to some error in the program
+a program is considered to be good if it is capable of handeling the errors encountered
+ and does not get terminated during execution.
+
+there are 3 types of errors in a program:
+1. Syntax Error
+2. Runtime Error
+3. Exceptions
+
+1. Syntax Error:
+Syntax Error are the most common error. these errors can be easily traced and corrected.
+these errors occours when the programmer voilates the syntax of programming. 
+mostly the interpreter provides help message to rectify the syntax error.
+program start execution after the syntax errors are rectified.
+syntax errors are displayed as 
+SyntaxError: 
+followed by an appropriate help message to rectify the error.
+ex.
+>>> 1 = 10
+SyntaxError: cannot assign to literal
+
+>>> print 'Test'
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print('Test')?
+>>> 'This"
+SyntaxError: EOL while scanning string literal
+>>> print("Hello')
+      
+SyntaxError: EOL while scanning string literal
+
+>>> for i in range(10)
+SyntaxError: invalid syntax
+
+
+2. Runtime Error:
+Runtime errors occours when the program start execution and 
+at some point it crashes or get terminated with some error message.
+ex.
+>>> v = 0
+>>> n = 10
+>>> n/v
+ZeroDivisionError: division by zero
+
+>>> 1 + 'k'
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+>>> a = 10
+>>> c = a+b
+NameError: name 'b' is not defined
+
+>>> l1 = [1,2,3]
+>>> l1[3]
+IndexError: list index out of range
+
+
+3. Exceptions:
+Errors detected during execution are called Exceptions. these errors
+occours when something abnormal or unusual occours in the program execution
+
+>>> x = int(input('enter the number : '))
+enter the number : abc
+ValueError: invalid literal for int() with base 10: 'abc'
+
+************************************************
+
+Exception Handeling:
+Exception Handeling is the way to handel an exception raised during 
+the execution of the program and protects the program from abnormal termination. 
+Pyhon has some built in exception names and the programmer can define execution 
+of his own kind also if required.
+
+1. raise statment
+2. try - exception statment
+
+1. raise statment:
+When an error occours during the program execution then python raises an exception.
+this exception can be handeled by the try /except statment.
+some exceptions are:
+1. NameError: Raised when an identifier is not found in the local or global namespace.
+>>> a = 10
+>>> b = 20
+>>> c = a+ d
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    c = a+ d
+NameError: name 'd' is not defined
+
+2. TypeError: Raised when an operation/function is attempted that is invalid for specified datatype 
+>>> a = 10
+>>> b = 'B'
+>>> a+b
+Traceback (most recent call last):
+  File "<pyshell#6>", line 1, in <module>
+    a+b
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+3. ValueError: Raised when an operation/function receives right type arguments but 
+inappropriate value
+
+>>> x = int(input('Enter the Number '))
+Enter the Number a
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    x = int(input('Enter the Number '))
+ValueError: invalid literal for int() with base 10: 'a'
+
+4. ZeroDivisionError: Raised when division or modulo by zero takes place for a 
+numeric datatype
+>>> a = 10
+>>> b = 0
+>>> c = a/b
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    c = a/b
+ZeroDivisionError: division by zero
+
+5. AttributeError: Raised when an object does not find an attribute.
+
+>>> a = set([1,2])
+>>> a.append(34)
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    a.append(34)
+AttributeError: 'set' object has no attribute 'append'
+
+6. KeyError: Raised when a dictionary key is not found in the set of existing keys
+
+>>> d = {1:'One',2:'Two'}
+>>> d[3]
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    d[3]
+KeyError: 3
+
+7. IndentationError: Raised due to incorrect indentation
+>>> for i in range(10):
+print(i)
+SyntaxError: expected an indented block
+
+8. IOError: Raised if the requested file cannot be opened
+>>> fh = open('Abc.txt')
+Traceback (most recent call last):
+  File "<pyshell#23>", line 1, in <module>
+    fh = open('Abc.txt')
+FileNotFoundError: [Errno 2] No such file or directory: 'Abc.txt'
+
+9. IndexError: Raised when an index is not found in a sequence i.e. the index is out of range
+
+>>> a = [1,2]
+>>> a[2]
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    a[2]
+IndexError: list index out of range
+
+10. ImortError: Raised if python cannot find the module requested in program
+
+
+11. EOFError: Raised when a file method tries to read beyond the file.
+12. SyntaxError: Raised when there is some error in the python syntax
+13. RuntimeError: Raised when the error doesnot fall under any of the above mentioned categories
+
+
+*******************
+try and except :
+try and except block is used to handle the exceptions raised during the program execution
+
+the code that is expected to raise some exception is placed in the try block
+and the action to be taken in the case of rise of exception is placed in the except block
+
+1. try - except block:
+
+try:
+	First execute code in this block
+except:
+	if exception rises during execution of try block code 
+	then execute the code in this block
+
+Ex.
+
+try:
+    a = int(input('Enter The Value of A : '))
+    b = int(input('Enter The Value of B : '))
+    c = a + b
+    print ('Sum of {} and {} is {}'.format(a,b,c))
+except:
+    print('Error: Entered value is not a Number ')
+    
+output:
+Enter The Value of A : a
+Error: Entered value is not a Number 
+
+
+2. try - except - else block:
+try:
+	First execute code in this block
+	
+except Exception 1:
+	if exception 1 is raised then execute this block
+
+except Exception 2:
+	if exception 2 is raised then execute this block
+
+except Exception 3:
+	if exception 3 is raised then execute this block
+	.
+	.
+else:
+	if any exception is not raised then execute this block
+	
+
+the else block would be executed when any exception is not raised during program execution
+
+Ex.
+
+try:
+    a = int(input('Enter The Value of Dividend : '))
+    b = int(input('Enter The Value of Divisor : '))
+    c = a / b
+
+except ValueError: print('Error: You have not entered any Number ')
+except ZeroDivisionError: print('Error: Divisor cannot be Zero ')
+except: print('An Error occurred')
+
+else:
+    print(' {} / {} = {}'.format(a, b, c))
+	
+
+output:
+Enter The Value of Dividend : 12
+Enter The Value of Divisor : 4
+ 12 / 4 = 3.0
+
+
+Enter The Value of Dividend : 12
+Enter The Value of Divisor : a
+Error: You have not entered any Number 
+
+
+
+Enter The Value of Dividend : 12
+Enter The Value of Divisor : 0
+Error: Divisor cannot be Zero 
+
+
+Enter The Value of Dividend : 12
+Enter The Value of Divisor : 
+Error: You have not entered any Number 
+
+
+
+3. try - except - else - finally block:
+try:
+	First execute code in this block
+	
+except Exception Name 1:
+	if exception Name 1 is raised then execute this block
+
+except Exception Name 2:
+	if exception Name 2 is raised then execute this block
+
+except Exception Name 3:
+	if exception Name 3 is raised then execute this block
+	.
+	.
+else:
+	if any of the exceptions listed above is not raised then execute this block
+	
+finally:
+	Alwas execute this block before exiting the try statment
+	
+
+the finally block would always be executed irrespective of the situation 
+whether any exception is raised or not during the program execution
+
+Ex.
+
+try:
+    a = int(input('Enter The Value of Dividend : '))
+    b = int(input('Enter The Value of Divisor : '))
+    c = a / b
+
+except ValueError: print('Error: You have not entered any Number ')
+except ZeroDivisionError: print('Error: Divisor cannot be Zero ')
+except: print('An Error occurred')
+
+else:
+    print(' {} / {} = {}'.format(a, b, c))
+
+finally:
+    print('End of Program..')
+
+
+Output:
+
+Enter The Value of Dividend : 12
+Enter The Value of Divisor : 4
+ 12 / 4 = 3.0
+End of Program..
+
+
+Enter The Value of Dividend : 12
+Enter The Value of Divisor : a
+Error: You have not entered any Number 
+End of Program..
